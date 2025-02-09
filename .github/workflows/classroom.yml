@@ -1,0 +1,95 @@
+name: Autograding Test for Problem Set 01
+on: ["push", "repository_dispatch"]
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint
+
+      # ----- Tests for Problem 01: Simple Calculator Program -----
+      - name: File Existence Check - problem_01.py
+        id: file-existence-problem01
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: File Existence Check - problem_01.py
+          command: "test -f problem_01.py"
+          timeout: 10
+          max-score: 5
+
+      - name: Syntax Check - problem_01.py
+        id: syntax-check-problem01
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Syntax Check - problem_01.py
+          command: "pylint problem_01.py --disable=C"
+          timeout: 10
+          max-score: 15
+
+      - name: Logic Check - problem_01.py
+        id: logic-check-problem01
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Logic Check - problem_01.py
+          command: |
+            OUTPUT=$(echo "5\n3" | python problem_01.py) && \
+            echo "$OUTPUT" | grep -q "The sum is 8" && \
+            echo "$OUTPUT" | grep -q "The difference is 2" && \
+            echo "$OUTPUT" | grep -q "The product is 15" && \
+            echo "$OUTPUT" | grep -q "The quotient is 1.67"
+          timeout: 10
+          max-score: 30
+
+      # ----- Tests for Problem 02: Square the Number Program -----
+      - name: File Existence Check - problem_02.py
+        id: file-existence-problem02
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: File Existence Check - problem_02.py
+          command: "test -f problem_02.py"
+          timeout: 10
+          max-score: 5
+
+      - name: Syntax Check - problem_02.py
+        id: syntax-check-problem02
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Syntax Check - problem_02.py
+          command: "pylint problem_02.py --disable=C"
+          timeout: 10
+          max-score: 15
+
+      - name: Logic Check - problem_02.py
+        id: logic-check-problem02
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Logic Check - problem_02.py
+          command: |
+            OUTPUT=$(echo "4" | python problem_02.py) && \
+            echo "$OUTPUT" | grep -q "The square of 4 is 16.00"
+          timeout: 10
+          max-score: 30
+
+      # ----- Final Reporter Step -----
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          FILE-EXISTENCE-PROBLEM01_RESULTS: "${{ steps.file-existence-problem01.outputs.result }}"
+          SYNTAX-CHECK-PROBLEM01_RESULTS: "${{ steps.syntax-check-problem01.outputs.result }}"
+          LOGIC-CHECK-PROBLEM01_RESULTS: "${{ steps.logic-check-problem01.outputs.result }}"
+          FILE-EXISTENCE-PROBLEM02_RESULTS: "${{ steps.file-existence-problem02.outputs.result }}"
+          SYNTAX-CHECK-PROBLEM02_RESULTS: "${{ steps.syntax-check-problem02.outputs.result }}"
+          LOGIC-CHECK-PROBLEM02_RESULTS: "${{ steps.logic-check-problem02.outputs.result }}"
+        with:
+          runners: file-existence-problem01,syntax-check-problem01,logic-check-problem01,file-existence-problem02,syntax-check-problem02,logic-check-problem02
