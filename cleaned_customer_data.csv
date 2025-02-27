@@ -1,0 +1,11 @@
+Customer_ID,Name,Age,Gender,Purchase_Amount,Purchase_Date,Category,Payment_Method
+101,Alice,25.0,Female,200.5,2024-05-01,Electronics,Credit Card
+102,Bob,30.0,Male,150.0,2024-10-02,Groceries,Debit Card
+103,Charlie,30.5,Male,450.75,2024-01-03,Clothing,PayPal
+104,David,40.0,Male,0.0,2024-04-20,Uncategorized,Credit Card
+105,Eve,22.0,Female,320.4,NA,Electronics,Debit Card
+107,Grace,29.0,Female,75.3,2024-07-08,Groceries,PayPal
+109,Ivy,50.0,Female,0.0,2024-10-20,Clothing,Debit Card
+110,Jack,27.0,Male,89.6,2024-10-11,Electronics,Facebook
+101,Alice,25.0,Unknown,200.5,2024-05-04,Electronics,Credit Card
+105,Eve,22.0,Female,320.4,2024-05-25,Electronics,Debit Card

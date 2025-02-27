@@ -1,0 +1,13 @@
+Customer_ID,Name,Age,Gender,Purchase_Amount,Purchase_Date,Category,Payment_Method
+101,Alice,25,Female,200.5,05/01/2024,Electronics,Credit Card
+102,Bob,30,Male,150,10/02/2024,Groceries,Debit Card
+103,Charlie,,Male,450.75,01/03/2024,Clothing,PayPal
+104,David,40,Male,,20/04/2024,,Credit Card
+105,Eve,22,Female,320.4,,Electronics,Debit Card
+106,Frank,35,Male,1300,30/06/2024,Clothing,Bitcoin
+107,Grace,29,Female,75.3,07/08/2024,Groceries,PayPal
+108,Hannah,,Female,9999.99,January 5, 2024,Electronics,Credit Card
+109,Ivy,50,Female,,20/10/2024,Clothing,Debit Card
+110,Jack,27,Male,89.6,10/11/2024,Electronics,Facebook
+101,Alice,25,Unknown,200.5,05/04/2024,Electronics,Credit Card
+105,Eve,22,Female,320.4,25/05/2024,Electronics,Debit Card

@@ -1,0 +1,4 @@
+print("Hello world!")
+print("Name: John Doe")
+print("Course: BSIT")
+print("Interests in programming: Web development, UX design")
