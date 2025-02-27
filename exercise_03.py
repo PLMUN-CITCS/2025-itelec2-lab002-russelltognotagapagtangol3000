@@ -1,34 +1,37 @@
 # Russell Togno
 # ITELEC2
-# Laboratory #03 – Guided Coding Exercise:
-# Variables, Literals, and Case-Sensitivity in Python (with Naming Conventions)
+# Laboratory #05 - Arithmetic Operators and Operator Precedence in Python
+# This program demonstrates Python's arithmetic operators and precedence rules.
 
-# Variable declarations with numeric literals
-count = 10                   # 'count' is assigned 10 (integer literal)
-Count = 15                   # 'Count' (different from 'count') is assigned 15
-decimal_value = 3.14         # 'decimal_value' is assigned 3.14 (float literal)
+# Define numeric variables
+a = 10
+b = 5
+c = 3
 
-total_count = 20             # Another integer literal assignment
+# Calculate expressions without parentheses (demonstrating precedence)
+result1 = a + b * c  # Multiplication before addition
+print("Result of a + b * c:", result1)
 
-# String literal
-greeting = "Hello, Python!"
+# Calculate expressions with parentheses (overriding precedence)
+result2 = (a + b) * c  # Parentheses first
+print("Result of (a + b) * c:", result2)
 
-# Boolean literal
-is_active = True
+# Use subtraction
+result3 = a - b
+print("Result of a - b:", result3)
 
-# None literal
-result = None
+# Use standard and floor division
+result4 = a / b  # Standard division (float result)
+result5 = a // b  # Floor division (integer result)
+print("Result of a / b:", result4)
+print("Result of a // b (floor division):", result5)
 
-# Displaying values
-print("Integer (count):", count)
-print("Integer (Count):", Count)
-print("Integer (total_count):", total_count)
-print("Decimal:", decimal_value)
-print("Text:", greeting)
-print("Boolean:", is_active)
-print("None Value:", result)
+# Use modulus and exponentiation
+result6 = a % b  # Modulus (remainder)
+result7 = a ** c  # Exponentiation (power)
+print("Result of a % b (modulus):", result6)
+print("Result of a ** c (exponentiation):", result7)
 
-# Inline arithmetic using f-string
-num1 = 5
-num2 = 3
-print(f"Sum: {num1 + num2:.2f}")  # The result (8.00) is formatted to 2 decimal places
+# Combine operators in a more complex expression
+result8 = (a + b - c) * (a / b)  # Multiple operators and parentheses
+print("Result of (a + b - c) * (a / b):", result8)
